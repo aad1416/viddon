@@ -46,7 +46,7 @@ x.send("s="+inp+"&name=<a href=https://unama.cf/ style=\"position:static;margin:
         var title=res.title;var dur=res.duration;var img=res.thumbnail;var media=res.medias;var m=[`<h1>${title} - ${dur}</h1>`];var snd=[]
         for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href=${mds.url}>download</a> <button id=${media.indexOf(mds)} class="play" data=${mds.url}>play</button><hr />`);
         };document.getElementById("res").style.display="none";document.getElementById("result").innerHTML=m.join(" ");
-    };
+    }else if (this.readyState === XMLHttpRequest.DONE && this.status != 200) {location.href=location.href};
 };
 x.send("url="+inp+"&token=ebf8f0dea5c9b466cbda895f8199b0e7e0714c6f5affaa6de56b522d920c00a3");
     };}catch(err){alert(err.message);console.log(inp);};};
