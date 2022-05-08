@@ -34,7 +34,7 @@
         function g(){var inp=document.getElementById("inp").value;document.getElementById("result").innerHTML="";document.getElementById("res").style.display="block";try{var u= new URL(inp);if (u.hostname.includes('youtube')){
           var x=new XMLHttpRequest();x.open("POST","https://m.unama.cf/video/");x.setRequestHeader('Access-Control-Allow-Origin', '*');x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        var res=x.responseText.replace('/imgpos/','https://m.unama.cf/imgpos/').replace('/play/','https://m.unama.cf/play/');document.write(res);
+        var res=x.responseText.replace('/imgpos/','https://m.unama.cf/imgpos/').replace('/play/','https://m.unama.cf/play/').replace('/play/','https://m.unama.cf/play/');document.write(res);
         }
     };
 x.send("s="+inp+"&name=<a href=https://unama.cf/>UNAMA</a>");
