@@ -7,23 +7,25 @@
 	<link rel="icon" href="./icon.svg">
     <title>ویددان : دانلود ویدیو</title>
     <style>
-      main{width: 100%;height:calc(100% - 100px);position: relative;padding: 0;margin: 0;border:1px solid green;}
-      h1{position:absolute;text-align: center;width: 100%;left:0;}
-      .search{display: flex;justify-content: center;align-items:center;border: 1px solid red;width: 100%;height:calc(100vh - 100px);}
+      main{width: 100%;height:calc(100% - 100px);position: relative;padding: 0;margin: 0;}
+      h1{color:#b06418 ;font-size: 40px;}
+      header{position:absolute;text-align: center;width: 100%;left:0;}#head{display: none;}
+      .search{display: flex;justify-content: center;align-items:center;width: 100%;height:calc(100vh - 100px);}
       #inp{width: 70%;height:30px;margin:0 5px 0 0;border:2px solid #00002f ;font-size: 22px;padding: 3px 10px;border-radius: 0 20px 0 20px / 0 30px 0 30px ;}
+      :-moz-placeholder {text-align: right;}:-ms-input-placeholder {text-align: right;}::-webkit-input-placeholder {text-align: right;}::placeholder{text-align: right;}
       #submit{height:45px;background-color:inherit;border:0;cursor: pointer;font-size: 30px;}
       .res{position:fixed;top:calc(50% - 125px);left:calc(50% - 125px);display: none;}
       footer{width: 100%;height:80px;background-color: #303030;display: flex;flex-wrap: nowrap;overflow: hidden;margin-bottom: -80px;}
-      figure{display: inline-block;margin: 10px 30px 5px; animation: a 50s linear infinite alternate;cursor: pointer;}
+      figure{display: inline-block;margin: 10px 20px 5px; animation: a 52s linear infinite alternate;cursor: pointer;}
       footer:hover {background-color: #1c4400}
-      @keyframes a {0%{transform: translate(-4650px)} 100%{transform: translate(0)}}
+      @keyframes a {0%{transform: translate(-4800px)} 100%{transform: translate(200px)}}
       .icon{height: 40px;width:40px;display: block;margin:0 auto;}
       .icon.puh{background-color: rgba(115, 103, 89, 0.5);}
       figcaption{text-align: center;padding: 5px;color: #8fbc8f;font-weight: 800;font-family: 'Courier New', Courier, monospace;}
     </style>
 </head>
-<body><div class="wrp"><main id="main"><h1>ویددان</h1><div class=search id="search"><input type="text" id="inp" autocomplete="url" placeholder="لینک ویدیو" dir="auto" ><input type="submit" value="🔎" onclick="g()" id="submit"></div><div id="result"></div><video id="video" src="" controls style="display:none;"></video></main>
-<footer>
+<body><div id="wrp"><main><header><h1>ویددان</h1><img id="head" src="./icon.svg"></header><div class=search id="search"><input type="text" id="inp" autocomplete="url" placeholder="لینک ویدیو" dir="auto" ><input type="submit" value="🔎" onclick="g()" id="submit"></div><div id="result"></div><video id="video" src="" controls style="display:none;"></video></main>
+<footer id="footer">
 <figure><img src="./icon/9gag.svg" class="icon" alt="9gag"><figcaption>9GAG</figcaption></figure>
 <figure><img src="./icon/akillitv.svg" class="icon" alt="akillitv"><figcaption>AkıllıTV</figcaption></figure>
 <figure><img src="./icon/bandcamp.svg" class="icon" alt="bandcamp"><figcaption>Bandcamp</figcaption></figure>
@@ -92,10 +94,11 @@
         </svg>
         
     <script>
-        function g(){document.getElementById("search").style.height="auto";var inp=document.getElementById("inp").value;document.getElementById("result").innerHTML="";try{var u= new URL(inp);document.getElementById("main").style.opacity="0.1";document.getElementById("res").style.display="block";if (u.hostname.includes('yoxutube')){
+        var result=document.getElementById("result");var wrp=document.getElementById("wrp");var res=document.getElementById("res");var footercss=document.getElementById("footer").style.cssText
+        function g(){var inp=document.getElementById("inp").value;result.innerHTML="";try{var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.height="81px";document.getElementById("footer").style.cssText="margin-top:calc(100vh - 180px);";document.getElementsByTagName("h1")[0].remove;document.getElementById("head").style.cssText="display: block; position: absolute; top: 0;z-index:-999;";res.style.display="block";if (u.hostname.includes('yoxutube')){
           var x=new XMLHttpRequest();x.open("POST","https://m.unama.cf/video/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        var res=x.responseText.replace('/imgpos/','https://m.unama.cf/imgpos/').replace(', \"/play/',', \"https://m.unama.cf/play/').replace('/play/','https://m.unama.cf/play/');document.write(res);
+        var resp=x.responseText.replace('/imgpos/','https://m.unama.cf/imgpos/').replace(', \"/play/',', \"https://m.unama.cf/play/').replace('/play/','https://m.unama.cf/play/');document.write(resp);
         }
     };
 x.send("s="+inp+"&name=<a href=https://unama.cf/ style=\"position:static;margin:0 auto;background:inherit;color:#dbf7d7;\">https://Unama.cf</a>");
@@ -103,14 +106,14 @@ x.send("s="+inp+"&name=<a href=https://unama.cf/ style=\"position:static;margin:
         else {var x=new XMLHttpRequest();x.open("POST","https://plometei.ru/wp-json/aio-dl/video-data/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.overrideMimeType('application/json; charset=UTF-8');
         x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        var res=JSON.parse(x.responseText);
-        var title=res.title;var dur=res.duration;var img=res.thumbnail;var media=res.medias;var m=[`<h1>${title} - ${dur}</h1>`];var snd=[]
+        var resp=JSON.parse(x.responseText);
+        var title=resp.title;var dur=resp.duration;var img=resp.thumbnail;var media=resp.medias;var m=[`<h2>${title} - ${dur}</h2>`];var snd=[]
         for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href=${mds.url}>download</a> <button id=${media.indexOf(mds)} class="play" data=${mds.url}>play</button><hr />`);
-        };document.getElementById("res").style.display="none";document.getElementById("main").style.opacity="1";document.getElementById("result").innerHTML=m.join(" ");
-    }
+        };res.style.display="none";wrp.style.opacity="1";result.innerHTML=m.join(" ");
+    }//else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
 };
 x.send("url="+inp+"&token=ebf8f0dea5c9b466cbda895f8199b0e7e0714c6f5affaa6de56b522d920c00a3");
-    };}catch(err){alert(err.message);console.log(inp);};};
+    };}catch(err){alert(err.message);};};
     document.addEventListener('click', (e) => {
     let element = e.target;
     if(element.tagName == "BUTTON"){ 
