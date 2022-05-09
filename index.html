@@ -15,7 +15,7 @@
       :-moz-placeholder {text-align: right;}:-ms-input-placeholder {text-align: right;}::-webkit-input-placeholder {text-align: right;}::placeholder{text-align: right;}
       #submit{height:45px;background-color:inherit;border:0;cursor: pointer;font-size: 30px;}
       .res{position:fixed;top:calc(50% - 125px);left:calc(50% - 125px);display: none;}
-      footer{width: 100%;height:80px;background-color: #303030;display: flex;flex-wrap: nowrap;overflow: hidden;margin-bottom: -80px;}
+      footer{width: 100%;height:80px;background-color: #303030;display: flex;flex-wrap: nowrap;overflow: hidden;margin-bottom: 0;}
       figure{display: inline-block;margin: 10px 20px 5px; animation: a 52s linear infinite alternate;cursor: pointer;}
       footer:hover {background-color: #1c4400}
       @keyframes a {0%{transform: translate(-4800px)} 100%{transform: translate(200px)}}
@@ -95,7 +95,7 @@
         
     <script>
         var result=document.getElementById("result");var wrp=document.getElementById("wrp");var res=document.getElementById("res");var footercss=document.getElementById("footer").style.cssText
-        function g(){var inp=document.getElementById("inp").value;result.innerHTML="";try{var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.height="81px";document.getElementById("footer").style.cssText="margin-top:calc(100vh - 180px);";document.getElementsByTagName("h1")[0].remove;document.getElementById("head").style.cssText="display: block; position: absolute; top: 0;z-index:-999;";res.style.display="block";if (u.hostname.includes('yoxutube')){
+        function g(){var inp=document.getElementById("inp").value;result.innerHTML="";try{var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.height="81px";document.getElementById("footer").style.cssText="margin-top:calc(100vh - 180px);";document.getElementsByTagName("h1")[0].remove();document.getElementById("head").style.cssText="display: block; position: absolute; top: 0;z-index:-999;";res.style.display="block";if (u.hostname.includes('yoxutube')){
           var x=new XMLHttpRequest();x.open("POST","https://m.unama.cf/video/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         var resp=x.responseText.replace('/imgpos/','https://m.unama.cf/imgpos/').replace(', \"/play/',', \"https://m.unama.cf/play/').replace('/play/','https://m.unama.cf/play/');document.write(resp);
