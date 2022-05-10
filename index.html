@@ -11,8 +11,8 @@
 	html,body,#wrp{height:calc(100% - 15px);margin:0;padding:0;}
 	@font-face{font-family:tanha;src:url('./icon/Tanha.woff2') format('woff2'),url('./icon/Tanha.woff') format('woff');}
       main{width: 100%;height:calc(100% - 62px);position: relative;padding: 0;margin: 0;}
-      h1{color:#b06418 ;font-size: 40px;font-family:tanha,Tahoma,sans-serif;}
-      header{text-align: center;width: 100%;left:0;}
+      h1{color:#b06418 ;font-size: 40px;font-family:tanha,Tahoma,sans-serif;margin:.65em auto;}
+      header{text-align: center;width: 100%;left:0;} #header{display:none;width:100%;background:#95bf9a;border-bottom:1px solid #0a2a10;height:81px;box-shadow:1px 4px 30px 0 rgb(0 120 0 / 20%), 0 6px 40px 0 rgb(0 12 0 / 19%)}
       .search{display: flex;justify-content: center;align-items:center;width: 100%;height:calc(100% - 150px);}
       #inp{outline:none;width: 70%;height:30px;margin:0 5px 0 0;border:2px solid #00002f ;font-size: 22px;padding: 3px 10px;border-radius: 0 20px 0 20px / 0 30px 0 30px;font-family:tanha,Courier,sans-serif;}
       :-moz-placeholder {text-align: right;}:-ms-input-placeholder {text-align: right;}::-webkit-input-placeholder {text-align: right;}::placeholder{text-align: right;} 
@@ -29,7 +29,7 @@
       figcaption{text-align: center;padding: 5px;color: #8fbc8f;font-weight: 800;font-family: 'Courier New', Courier, monospace;}
     </style>
 </head>
-<body><div id="wrp"><main id="main"><header><h1>ویددان <span style="display:none;"> پخش و دانلود ویدیو از محبوب ترین سایت ها (یوتیوب، اینستاگرام، اوکی، فیسبوک و...) </span></h1></header><div class=search id="search"><input type="text" id="inp" autocomplete="url" placeholder="لینک ویدیو" dir="auto" ><input type="submit" value="🔎" onclick="g()" id="submit"></div><div id="result"></div><video id="video" src="" controls style="display:none;"></video></main>
+<body><div id="wrp"><main id="main"><header><h1>ویددان <span style="display:none;"> پخش و دانلود ویدیو از محبوب ترین سایت ها (یوتیوب، اینستاگرام، اوکی، فیسبوک و...) </span></h1><a id=header href="./"><img src="./icon.svg" alt="viddon"/></a></header><div class=search id="search"><input type="url" id="inp" autocomplete="on" placeholder="لینک ویدیو" dir="auto" required><input type="submit" value="🔎" onclick="g()" id="submit"></div><div id="result"></div><video id="video" src="" controls style="display:none;"></video></main>
 <footer id="footer">
 <figure><img src="./icon/9gag.svg" class="icon" alt="9gag" loading="lazy"><figcaption>9GAG</figcaption></figure>
 <figure><img src="./icon/akillitv.svg" class="icon" alt="akillitv" loading="lazy"><figcaption>AkıllıTV</figcaption></figure>
@@ -100,20 +100,22 @@
         
     <script>
         var result=document.getElementById("result");var wrp=document.getElementById("wrp");var res=document.getElementById("res");
-        function g(){result.innerHTML="";try{var inp=document.getElementById("inp").value;var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.height="81px";document.getElementById("main").style.cssText="height: calc(100% - 35px);";document.getElementsByTagName("h1")[0].innerHTML="";res.style.display="block";if (u.hostname.includes('yoxutube')){
-          var x=new XMLHttpRequest();x.open("POST","https://m.unama.cf/video/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.onreadystatechange = function() { 
+        function g(){result.innerHTML="";try{var inp=document.getElementById("inp").value;var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.cssText="height:81px;margin-top:81px;";document.getElementById("main").style.cssText="height: calc(100% - 35px);min-height:calc(100vh - 161px);";try{document.getElementsByTagName("h1")[0].remove()}catch{};document.body.style.height="auto";res.style.display="block";document.getElementById("header").style.cssText="display:block;position:fixed;top:0;";if (u.hostname.includes('youtu')){var x=new XMLHttpRequest();x.open("POST","https://plometei.ru/wp-json/aio-dl/video-data/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.overrideMimeType('application/json; charset=UTF-8');
+        x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        var resp=x.responseText.replace('/imgpos/','https://m.unama.cf/imgpos/').replace(', \"/play/',', \"https://m.unama.cf/play/').replace('/play/','https://m.unama.cf/play/');document.write(resp);
-        }
-    };
-x.send("s="+inp+"&name=<a href=https://unama.cf/ style=\"position:static;margin:0 auto;background:inherit;color:#dbf7d7;\">https://Unama.cf</a>");
-        } 
+        var resp=JSON.parse(x.responseText);
+        var title=resp.title;var dur=resp.duration;var img=resp.thumbnail;var media=resp.medias;var m=[`<h2>${title} - ${dur}</h2>`];
+        for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href="${mds.url}">download</a> <button id=${media.indexOf(mds)} class="play" data="${mds.url}">play</button><hr />`);
+        };res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
+    }//else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
+};
+x.send("url="+inp+"&token=ebf8f0dea5c9b466cbda895f8199b0e7e0714c6f5affaa6de56b522d920c00a3");} 
         else {var x=new XMLHttpRequest();x.open("POST","https://plometei.ru/wp-json/aio-dl/video-data/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.overrideMimeType('application/json; charset=UTF-8');
         x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         var resp=JSON.parse(x.responseText);
-        var title=resp.title;var dur=resp.duration;var img=resp.thumbnail;var media=resp.medias;var m=[`<h2>${title} - ${dur}</h2>`];var snd=[]
-        for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href=${mds.url}>download</a> <button id=${media.indexOf(mds)} class="play" data=${mds.url}>play</button><hr />`);
+        var title=resp.title;var dur=resp.duration;var img=resp.thumbnail;var media=resp.medias;var m=[`<h2>${title} - ${dur}</h2>`];
+        for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href="${mds.url}">download</a> <button id=${media.indexOf(mds)} class="play" data="${mds.url}">play</button><hr />`);
         };res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
     }//else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
 };
