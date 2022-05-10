@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>function vu(str) {var p = new RegExp('^(https?:\\/\\/)?'+'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+'((\\d{1,3}\\.){3}\\d{1,3}))'+'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+'(\\?[;&a-z\\d%_.~+=-]*)?'+'(\\#[-a-z\\d_]*)?$','i');return !!p.test(str);};navigator.clipboard.readText().then(clipText => vu(clipText) ? document.querySelector("#inp").value = clipText : false);</script>
 	<link rel="icon" href="./icon.svg">
     <title>ویددان : دانلود ویدیو</title>
     <style>
-	html,body,#wrp{height:calc(100% - 15px);margin:0;padding:0;}@font-face{font-family:tanha;src:url('./icon/Tanha.woff2') format('woff2'),url('./icon/Tanha.woff') format('woff');}
+	html,body,#wrp{height:calc(100% - 15px);margin:0;padding:0;}
+	@font-face{font-family:tanha;src:url('./icon/Tanha.woff2') format('woff2'),url('./icon/Tanha.woff') format('woff');}
       main{width: 100%;height:calc(100% - 62px);position: relative;padding: 0;margin: 0;}
       h1{color:#b06418 ;font-size: 40px;font-family:tanha,Tahoma,sans-serif;}
       header{text-align: center;width: 100%;left:0;}
       .search{display: flex;justify-content: center;align-items:center;width: 100%;height:calc(100% - 150px);}
-      #inp{outline:none;width: 70%;height:30px;margin:0 5px 0 0;border:2px solid #00002f ;font-size: 22px;padding: 3px 10px;border-radius: 0 20px 0 20px / 0 30px 0 30px ;}
+      #inp{outline:none;width: 70%;height:30px;margin:0 5px 0 0;border:2px solid #00002f ;font-size: 22px;padding: 3px 10px;border-radius: 0 20px 0 20px / 0 30px 0 30px;font-family:tanha,Courier,sans-serif;}
       :-moz-placeholder {text-align: right;}:-ms-input-placeholder {text-align: right;}::-webkit-input-placeholder {text-align: right;}::placeholder{text-align: right;} 
 	  video{margin:10px auto;}
       #submit{height:45px;background-color:inherit;border:0;cursor: pointer;font-size: 30px;}
       .res{position:fixed;top:calc(50% - 125px);left:calc(50% - 125px);display: none;}
       footer{width: 100%;height:80px;background-color: #303030;display: flex;flex-wrap: nowrap;overflow: hidden;}
       figure{display: inline-block;margin: 10px 20px 5px; animation: a 52s linear infinite alternate;cursor: pointer;}
-      footer:hover {background-color: #1c4400}
+      footer:hover {background-color: #1c4400;overflow:scroll;-ms-overflow-style: none;scrollbar-width: none;}footer:hover::-webkit-scrollbar {display: none;}
+      footer:hover figure {-webkit-animation-play-state:paused;animation-play-state:paused;}
       @keyframes a {0%{transform: translate(-4800px)} 100%{transform: translate(200px)}}
       .icon{height: 40px;width:40px;display: block;margin:0 auto;}
       .icon.puh{background-color: rgba(115, 103, 89, 0.5);}
@@ -96,7 +99,7 @@
         </svg>
         
     <script>
-        var result=document.getElementById("result");var wrp=document.getElementById("wrp");var res=document.getElementById("res");var footercss=document.getElementById("footer").style.cssText;var inp=document.getElementById("inp").value;function vu(str) {var p = new RegExp('^(https?:\\/\\/)?'+'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+'((\\d{1,3}\\.){3}\\d{1,3}))'+'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+'(\\?[;&a-z\\d%_.~+=-]*)?'+'(\\#[-a-z\\d_]*)?$','i');return !!p.test(str);};navigator.clipboard.readText().then(clipText => vu(clipText) ? document.querySelector("#inp").value = clipText : false);
+        var result=document.getElementById("result");var wrp=document.getElementById("wrp");var res=document.getElementById("res");
         function g(){result.innerHTML="";try{var inp=document.getElementById("inp").value;var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.height="81px";document.getElementById("main").style.cssText="height: calc(100% - 35px);";document.getElementsByTagName("h1")[0].innerHTML="";res.style.display="block";if (u.hostname.includes('yoxutube')){
           var x=new XMLHttpRequest();x.open("POST","https://m.unama.cf/video/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
@@ -123,6 +126,7 @@ x.send("url="+inp+"&token=ebf8f0dea5c9b466cbda895f8199b0e7e0714c6f5affaa6de56b52
         var vid = document.getElementById("video");
         vid.src=element.getAttribute("data");
         vid.style.display="block";
+        vid.style.maxWidth=screen.width;
     };
 });
     </script>
