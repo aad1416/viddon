@@ -100,12 +100,12 @@
         
     <script>
         var result=document.getElementById("result");var wrp=document.getElementById("wrp");var res=document.getElementById("res");
-        function g(){result.innerHTML="";try{var inp=document.getElementById("inp").value;var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.cssText="height:81px;margin-top:81px;";document.getElementById("main").style.cssText="height: calc(100% - 35px);min-height:calc(100vh - 161px);";try{document.getElementsByTagName("h1")[0].remove()}catch{};document.body.style.height="auto";res.style.display="block";document.getElementById("header").style.cssText="display:block;position:fixed;top:0;";if (u.hostname.includes('youtu')){var x=new XMLHttpRequest();x.open("POST","https://plometei.ru/wp-json/aio-dl/video-data/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.overrideMimeType('application/json; charset=UTF-8');
+        function g(){result.innerHTML="";try{var inp=document.getElementById("inp").value;var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.cssText="height:81px;margin-top:81px;";document.getElementById("main").style.cssText="height: calc(100% - 35px);min-height:calc(100vh - 161px);";try{document.getElementsByTagName("h1")[0].remove()}catch{};document.body.style.height="auto";res.style.display="block";document.getElementById("header").style.cssText="display:block;position:fixed;top:0;";if (u.hostname.includes('youtu') || u.hostname.includes('vk')){var x=new XMLHttpRequest();x.open("POST","https://plometei.ru/wp-json/aio-dl/video-data/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.overrideMimeType('application/json; charset=UTF-8');
         x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         var resp=JSON.parse(x.responseText);
         var title=resp.title;var dur=resp.duration;var img=resp.thumbnail;var media=resp.medias;var m=[`<h2>${title} - ${dur}</h2>`];
-        for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href="${mds.url}">download</a> <button id=${media.indexOf(mds)} class="play" data="${mds.url}">play</button><hr />`);
+        for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href="https://video.aad1416.workers.dev/${btoa(mds.url)}">download</a> <button id=${media.indexOf(mds)} class="play" data="https://video.aad1416.workers.dev/${btoa(mds.url)}">play</button><hr />`);
         };res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
     }//else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
 };
