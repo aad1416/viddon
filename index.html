@@ -105,7 +105,7 @@
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         var resp=JSON.parse(x.responseText);
         var title=resp.title;var dur=resp.duration;var img=resp.thumbnail;var media=resp.medias;var m=[`<h2>${title} - ${dur}</h2>`];
-        for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href="https://video.aad1416.workers.dev/${mds.url}">download</a> <button id=${media.indexOf(mds)} class="play" data="https://video.aad1416.workers.dev/${mds.url}">play</button><hr />`);
+        for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href="https://video.aad1416.workers.dev/${mds.url}">download</a> <button id=${media.indexOf(mds)} class="play" data="https://video.aad1416.workers.dev/${btoa(mds.url)}">play</button><hr />`);
         };res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
     }//else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
 };
