@@ -31,7 +31,7 @@
 </head>
 <body><div id="wrp"><main id="main"><header><h1>ویددان <span style="display:none;"> پخش و دانلود ویدیو از محبوب ترین سایت ها (یوتیوب، اینستاگرام، اوکی، فیسبوک و...) </span></h1><a id=header href="./"><img src="./icon.svg" alt="viddon"/></a></header><div class=search id="search"><input type="url" id="inp" autocomplete="on" placeholder="لینک ویدیو" dir="auto" required><input type="submit" value="🔎" onclick="g()" id="submit"></div><div id="result"></div><video id="video" src="" controls style="display:none;"></video></main>
 <footer id="footer">
-<figure><img src="./icon/9gag.svg" class="icon" alt="9gag" loading="lazy"><figcaption>9GAG</figcaption></figure>
+<figure><img src="./icon/9gag.svg" class="icon puh" alt="9gag" loading="lazy"><figcaption>9GAG</figcaption></figure>
 <figure><img src="./icon/akillitv.svg" class="icon" alt="akillitv" loading="lazy"><figcaption>AkıllıTV</figcaption></figure>
 <figure><img src="./icon/bandcamp.svg" class="icon" alt="bandcamp" loading="lazy"><figcaption>Bandcamp</figcaption></figure>
 <figure><img src="./icon/bilibili.svg" class="icon" alt="bilibili" loading="lazy"><figcaption>Bilibili</figcaption></figure>
@@ -99,8 +99,18 @@
         </svg>
         
     <script>
-        var result=document.getElementById("result");var wrp=document.getElementById("wrp");var res=document.getElementById("res");
-        function g(){result.innerHTML="";try{var inp=document.getElementById("inp").value;var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.cssText="height:81px;margin-top:81px;";document.getElementById("main").style.cssText="height: calc(100% - 35px);min-height:calc(100vh - 161px);";try{document.getElementsByTagName("h1")[0].remove()}catch{};document.body.style.height="auto";res.style.display="block";document.getElementById("header").style.cssText="display:block;position:fixed;top:0;";if (u.hostname.includes('youtu') || u.hostname.includes('vk')){var x=new XMLHttpRequest();x.open("POST","https://plometei.ru/wp-json/aio-dl/video-data/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.overrideMimeType('application/json; charset=UTF-8');
+      function sec(d) {d = Number(d);var h = Math.floor(d / 3600);var m = Math.floor(d % 3600 / 60);var s = Math.floor(d % 3600 % 60);var hD = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";var mD = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";var sD = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";return hD + mD + sD; }var result=document.getElementById("result");var wrp=document.getElementById("wrp");var res=document.getElementById("res");
+        function g(){result.innerHTML="";try{var inp=document.getElementById("inp").value;var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.cssText="height:81px;margin-top:81px;";document.getElementById("main").style.cssText="height: calc(100% - 35px);min-height:calc(100vh - 161px);";try{document.getElementsByTagName("h1")[0].remove()}catch{};document.body.style.height="auto";res.style.display="block";document.getElementById("header").style.cssText="display:block;position:fixed;top:0;";if (u.hostname.includes('youtu')){var vidid=u.searchParams.get('v');var x=new XMLHttpRequest();x.open("GET","https://invidious.weblibre.org/api/v1/videos/"+vidid);x.overrideMimeType('application/json; charset=UTF-8');
+        x.onreadystatechange = function() { 
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        var resp=JSON.parse(x.responseText);
+        var title=resp.title;var dur=sec(resp.lengthSeconds);var img=`https://invidious.weblibre.org/vi/${vidid}/mqdefault.jpg`;var media=resp.formatStreams[0];var m=[`<h2>${title} - ${dur}</h2>`];
+        for (const mds of media) {m.push(`<h2>${mds.container} - ${mds.qualityLabel}</h2><a href="https://invidious.weblibre.org/${mds.url.split('googlevideo.com/')[1].concat('&title='+title)}">download</a> <button id=${media.indexOf(mds)} class="play" data="https://invidious.weblibre.org/${mds.url.split('googlevideo.com/')[1].concat('&title='+title)}">play</button><hr />`);
+        };res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
+    }//else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
+};
+x.send("url="+inp+"&token=ebf8f0dea5c9b466cbda895f8199b0e7e0714c6f5affaa6de56b522d920c00a3");}
+else if (u.hostname.includes('vk')){var x=new XMLHttpRequest();x.open("POST","https://plometei.ru/wp-json/aio-dl/video-data/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.overrideMimeType('application/json; charset=UTF-8');
         x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         var resp=JSON.parse(x.responseText);
