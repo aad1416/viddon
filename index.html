@@ -27,7 +27,7 @@
 <style>
 html,body,#wrp{height:calc(100% - 15px);margin:0;padding:0;}
 @font-face{font-family:tanha;src:url('./icon/Tanha.woff2') format('woff2'),url('./icon/Tanha.woff') format('woff');}
-  main{width: 100%;height:calc(100% - 55px);position: relative;padding: 0;margin: 0;}
+  main{width: 100%;height:calc(100% - 61px);position: relative;padding: 0;margin: 0;}
   h1{color:#b06418 ;font-size: 40px;font-family:tanha,Tahoma,sans-serif;margin:.65em auto;}
   header{text-align: center;width: 100%;left:0;} #header{display:none;width:100%;background:#95bf9a;border-bottom:1px solid #0a2a10;height:81px;box-shadow:1px 4px 30px 0 rgb(0 120 0 / 20%), 0 6px 40px 0 rgb(0 12 0 / 19%)}
   .search{display: flex;justify-content: center;align-items:flex-start;;width: 100%;height:calc(100% - 150px);flex-wrap:wrap;}#info{width:100%;display:block;text-align:center;font-size: 25px;font-family:tanha,Tahoma,sans-serif;margin-bottom:0;}
@@ -36,6 +36,7 @@ html,body,#wrp{height:calc(100% - 15px);margin:0;padding:0;}
   video{margin:10px auto;}
   #submit{height:45px;background-color:inherit;border:0;cursor: pointer;font-size: 30px;}
   .res{position:fixed;top:calc(50% - 125px);left:calc(50% - 125px);display: none;}
+  #aad{font-size: 30px;text-decoration: none;color: #eee;width:100%;display:block;text-align:center;}
   footer{width: 100%;height:80px;background-color: #303030;display: flex;flex-wrap: nowrap;overflow: hidden;}
   figure{display: inline-block;margin: 10px 20px 5px; animation: a 52s linear infinite alternate;cursor: pointer;}
   footer:hover {background-color: #1c4400;overflow:scroll;-ms-overflow-style: none;scrollbar-width: none;}footer:hover::-webkit-scrollbar {display: none;}
@@ -44,10 +45,10 @@ html,body,#wrp{height:calc(100% - 15px);margin:0;padding:0;}
   .icon{height: 40px;width:40px;display: block;margin:0 auto;}
   .icon.puh{background-color: rgba(115, 103, 89, 0.5);}
   figcaption{text-align: center;padding: 5px;color: #8fbc8f;font-weight: 800;font-family: 'Courier New', Courier, monospace;}
-  @media only screen and (max-width:700px){h1{font-size:30px;}#info{font-size:16px;}#inp{font-size: 16px}}
+  @media only screen and (max-width:700px){h1{font-size:30px;}#info{font-size:16px;}#inp{font-size: 16px}#aad{margin-top: 45px;font-size:25px;}}
 </style>
 </head>
-<body><div id="wrp"><main id="main"><header><h1>ویددان <span style="display:none;"> پخش و دانلود ویدیو از محبوب ترین سایت ها ( یوتیوب، اینستاگرام، نماشا، my.mail.ru , ok.ru فیسبوک و...) </span></h1><a id=header href="./"><img src="./icon.svg" alt="viddon"/></a></header><div class=search id="search"><h2 id=info>پخش و دانلود آنلاین ویدیو از بیش از 45 سایت ایرانی و خارجی</h2><input type="url" id="inp" autocomplete="on" placeholder="لینک ویدیو" dir="auto" required><input type="submit" value="🔎" onclick="g()" id="submit"></div><div id="result"></div><video id="video" src="" controls style="display:none;"></video></main>
+<body><div id="wrp"><main id="main"><header><h1>ویددان <span style="display:none;"> پخش و دانلود ویدیو از محبوب ترین سایت ها ( یوتیوب، اینستاگرام، نماشا، my.mail.ru , ok.ru فیسبوک و...) </span></h1><a id=header href="./"><img src="./icon.svg" alt="viddon"/></a></header><div class=search id="search"><h2 id=info>پخش و دانلود آنلاین ویدیو از بیش از 45 سایت ایرانی و خارجی</h2><input type="url" id="inp" autocomplete="on" placeholder="لینک ویدیو" dir="auto" required><input type="submit" value="🔎" onclick="g()" id="submit"></div><div id="result"></div><video id="video" src="" controls style="display:none;"></video><a id="aad" href="https://aad1416.tk">🏡</a></main>
 <footer id="footer">
 <figure><img src="./icon/9gag.svg" class="icon puh" alt="9gag" loading="lazy"><figcaption>9GAG</figcaption></figure>
 <figure><img src="./icon/akillitv.svg" class="icon" alt="akillitv" loading="lazy"><figcaption>AkıllıTV</figcaption></figure>
