@@ -6,14 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script>function vu(str) {var p = new RegExp('^(https?:\\/\\/)?'+'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+'((\\d{1,3}\\.){3}\\d{1,3}))'+'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+'(\\?[;&a-z\\d%_.~+=-]*)?'+'(\\#[-a-z\\d_]*)?$','i');return !!p.test(str);};navigator.clipboard.readText().then(clipText => vu(clipText) ? document.querySelector("#inp").value = clipText : false);</script>
 	<link rel="icon" href="./icon.svg">
-    <title>ویددان : دانلود ویدیو از محبوب ترین سایت ها</title>
+    <title>ویددان : دانلود آنلاین ویدیو از بیش از 45 سایت ( یوتیوب ، اینستاگرام ،... | viddon.tk</title>
+	<meta name="description" content="ویددان : دانلود ویدیو و صوت از بیش از 45 سایت مانند یوتیوب اینستاگرام فیسبوک">
+	<meta name="keywords" content="ویددان , دانلود از یوتیوب , دانلود آنلاین از اینستاگرام  , دانلود از فیسبوک  , دانلود از نماشا  , دانلود از ok.ru">
+	
+	<meta property="og:locale" content="fa_IR" />
+	<meta property="og:title" content="ویددان" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://viddon.tk/" />
+	<meta property="og:site_name" content="ویددان | viddon.tk" />
+	<meta property="og:description" content="ویددان : دانلود ویدیو و صوت از بیش از 45 سایت" />
+	<meta property="og:image" content="https://viddon.tk/icon.svg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:see_also" content="https://viddon.tk/index.html" />
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="ویددان | viddon.tk">
+	<meta itemprop="name" content="ویددان">
+	<meta itemprop="description" content="ویددان : دانلود ویدیو و صوت از بیش از 45 سایت">
+	<meta itemprop="image" content="https://viddon.tk/icon.svg">
+	
     <style>
 	html,body,#wrp{height:calc(100% - 15px);margin:0;padding:0;}
 	@font-face{font-family:tanha;src:url('./icon/Tanha.woff2') format('woff2'),url('./icon/Tanha.woff') format('woff');}
-      main{width: 100%;height:calc(100% - 61px);position: relative;padding: 0;margin: 0;}
+      main{width: 100%;height:calc(100% - 55px);position: relative;padding: 0;margin: 0;}
       h1{color:#b06418 ;font-size: 40px;font-family:tanha,Tahoma,sans-serif;margin:.65em auto;}
       header{text-align: center;width: 100%;left:0;} #header{display:none;width:100%;background:#95bf9a;border-bottom:1px solid #0a2a10;height:81px;box-shadow:1px 4px 30px 0 rgb(0 120 0 / 20%), 0 6px 40px 0 rgb(0 12 0 / 19%)}
-      .search{display: flex;justify-content: center;align-items:center;width: 100%;height:calc(100% - 150px);}
+      .search{display: flex;justify-content: center;align-items:flex-start;;width: 100%;height:calc(100% - 150px);flex-wrap:wrap;}#info{width:100%;display:block;text-align:center;font-size: 25px;font-family:tanha,Tahoma,sans-serif;margin-bottom:0;}
       #inp{outline:none;width: 70%;height:30px;margin:0 5px 0 0;border:2px solid #00002f ;font-size: 22px;padding: 3px 10px;border-radius: 0 20px 0 20px / 0 30px 0 30px;font-family:tanha,Courier,sans-serif;}
       :-moz-placeholder {text-align: right;}:-ms-input-placeholder {text-align: right;}::-webkit-input-placeholder {text-align: right;}::placeholder{text-align: right;} 
 	  video{margin:10px auto;}
@@ -27,9 +46,10 @@
       .icon{height: 40px;width:40px;display: block;margin:0 auto;}
       .icon.puh{background-color: rgba(115, 103, 89, 0.5);}
       figcaption{text-align: center;padding: 5px;color: #8fbc8f;font-weight: 800;font-family: 'Courier New', Courier, monospace;}
+	  @media only screen and (max-width:700px){h1{font-size:30px;}#info{font-size:16px;}#inp{font-size: 16px}}
     </style>
 </head>
-<body><div id="wrp"><main id="main"><header><h1>ویددان <span style="display:none;"> پخش و دانلود ویدیو از محبوب ترین سایت ها ( یوتیوب، اینستاگرام، نماشا، my.mail.ru , ok.ru فیسبوک و...) </span></h1><a id=header href="./"><img src="./icon.svg" alt="viddon"/></a></header><div class=search id="search"><input type="url" id="inp" autocomplete="on" placeholder="لینک ویدیو" dir="auto" required><input type="submit" value="🔎" onclick="g()" id="submit"></div><div id="result"></div><video id="video" src="" controls style="display:none;"></video></main>
+<body><div id="wrp"><main id="main"><header><h1>ویددان <span style="display:none;"> پخش و دانلود ویدیو از محبوب ترین سایت ها ( یوتیوب، اینستاگرام، نماشا، my.mail.ru , ok.ru فیسبوک و...) </span></h1><a id=header href="./"><img src="./icon.svg" alt="viddon"/></a></header><div class=search id="search"><h2 id=info>پخش و دانلود آنلاین ویدیو از بیش از 45 سایت ایرانی و خارجی</h2><input type="url" id="inp" autocomplete="on" placeholder="لینک ویدیو" dir="auto" required><input type="submit" value="🔎" onclick="g()" id="submit"></div><div id="result"></div><video id="video" src="" controls style="display:none;"></video></main>
 <footer id="footer">
 <figure><img src="./icon/9gag.svg" class="icon puh" alt="9gag" loading="lazy"><figcaption>9GAG</figcaption></figure>
 <figure><img src="./icon/akillitv.svg" class="icon" alt="akillitv" loading="lazy"><figcaption>AkıllıTV</figcaption></figure>
@@ -102,13 +122,13 @@
         </svg>
         
     <script>
-      function sec(d) {d = Number(d);var h = Math.floor(d / 3600);var m = Math.floor(d % 3600 / 60);var s = Math.floor(d % 3600 % 60);var hD = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";var mD = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";var sD = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";return hD + mD + sD; }var result=document.getElementById("result");var vid = document.getElementById("video");;var wrp=document.getElementById("wrp");var res=document.getElementById("res");function g(){result.innerHTML="";vid.style.display="none";try{var inp=document.getElementById("inp").value;var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.cssText="height:81px;margin-top:81px;";document.getElementById("main").style.cssText="height: calc(100% - 35px);min-height:calc(100vh - 161px);";try{document.getElementsByTagName("h1")[0].remove()}catch{};document.body.style.height="auto";res.style.display="block";document.getElementById("header").style.cssText="display:block;position:fixed;top:0;";if (u.hostname.includes('youtu')){var vidid=u.searchParams.get('v');var x=new XMLHttpRequest();x.open("GET","https://invidious.weblibre.org/api/v1/videos/"+vidid);x.overrideMimeType('application/json; charset=UTF-8');
+      function sec(d) {d = Number(d);var h = Math.floor(d / 3600);var m = Math.floor(d % 3600 / 60);var s = Math.floor(d % 3600 % 60);var hD = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";var mD = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";var sD = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";return hD + mD + sD; }var result=document.getElementById("result");var vid = document.getElementById("video");;var wrp=document.getElementById("wrp");var res=document.getElementById("res");function g(){result.innerHTML="";vid.style.display="none";try{var inp=document.getElementById("inp").value;var u= new URL(inp);wrp.style.opacity="0.1";document.getElementById("search").style.cssText="height:81px;margin-top:81px;";document.getElementById("main").style.cssText="height: calc(100% - 35px);min-height:calc(100vh - 161px);";try{document.getElementsByTagName("h1")[0].remove();document.getElementById("info").innerHTML=""}catch{};document.body.style.height="auto";res.style.display="block";document.getElementById("header").style.cssText="display:block;position:fixed;top:0;";if (u.hostname.includes('youtu')){var vidid=u.searchParams.get('v');var x=new XMLHttpRequest();x.open("GET","https://invidious.weblibre.org/api/v1/videos/"+vidid);x.overrideMimeType('application/json; charset=UTF-8');
         x.onreadystatechange = function() { 
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         var resp=JSON.parse(x.responseText);
         var title=resp.title;var dur=sec(resp.lengthSeconds);var img=`https://invidious.weblibre.org/vi/${vidid}/mqdefault.jpg`;var media=resp.formatStreams;var m=[`<h2>${title} - ${dur}</h2>`];
-        for (const mds of media) {m.push(`<h2>${mds.container} - ${mds.qualityLabel}</h2><a href="https://invidious.weblibre.org/${mds.url.split('googlevideo.com/')[1].concat('&title='+title+'.'+mds.container)}">download</a> <button id=${media.indexOf(mds)} class="play" data="https://invidious.weblibre.org/${mds.url.split('googlevideo.com/')[1].concat('&title='+title+'.'+mds.container)}">play</button><hr />`);if (resp.captions != []){for (const sub of resp.captions)m.push(`<h2>Subtitle (${sub.lable}) </h2><a href="https://invidious.weblibre.org/${sub.url.concat('&title='+title+'.srt')}">download</a><hr />`)};
-        };res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
+        for (const mds of media) {m.push(`<h2>${mds.container} - ${mds.qualityLabel}</h2><a href="https://invidious.weblibre.org/${mds.url.split('googlevideo.com/')[1].concat('&title='+title+'.'+mds.container)}">download</a> <button id=${media.indexOf(mds)} class="play" data="https://invidious.weblibre.org/${mds.url.split('googlevideo.com/')[1].concat('&title='+title+'.'+mds.container)}">play</button><hr />`);
+        };if (resp.captions != []){for (const sub of resp.captions)m.push(`<h2>Subtitle (${sub.label}) </h2><a href="https://invidious.weblibre.org/${sub.url.concat('&title='+title+'.srt')}">download</a><hr />`)};res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
     }else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
 };
 x.send("url="+inp+"&token=ebf8f0dea5c9b466cbda895f8199b0e7e0714c6f5affaa6de56b522d920c00a3");} else if(u.hostname.includes('namasha') || u.hostname.includes('tamasha')){var x=new XMLHttpRequest();x.open("GET","https://video.aad1416.workers.dev/persian?fa="+inp);x.overrideMimeType('application/json; charset=UTF-8');
@@ -154,9 +174,9 @@ x.send("url="+inp+"&token=ebf8f0dea5c9b466cbda895f8199b0e7e0714c6f5affaa6de56b52
     document.addEventListener('click', (e) => {
     let element = e.target;
     if(element.tagName == "BUTTON"){ 
-        console.log(element.getAttribute("data"));
+        console.log(document.body.offsetWidth - 20);
         vid.src=element.getAttribute("data");
-        vid.style.cssText=`display:block;max-width:${document.body.offsetWidth - 20}`;
+        vid.style.cssText=`display:block;max-width:${document.body.offsetWidth - 20}px`;
     };
 });
     </script>
