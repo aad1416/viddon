@@ -156,7 +156,7 @@ x.send("url="+inp+"&token=ebf8f0dea5c9b466cbda895f8199b0e7e0714c6f5affaa6de56b52
     if(element.tagName == "BUTTON"){ 
         console.log(element.getAttribute("data"));
         vid.src=element.getAttribute("data");
-        vid.cssText=`display:block;max-width:${document.body.offsetWidth - 20}`;
+        vid.style.cssText=`display:block;max-width:${document.body.offsetWidth - 20}`;
     };
 });
     </script>
