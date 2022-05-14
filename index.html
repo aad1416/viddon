@@ -144,7 +144,7 @@ x.onreadystatechange = function() {
 if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
 var resp=JSON.parse(x.responseText);
 var title=resp.title;var dur=resp.dur;var media=resp.video[0];var m=[`<h2>${title} - ${dur}</h2>`];
-for (const mds in media) {m.push(`<h2>${mds}</h2><a href="${media[mds]}">download</a> <button id=${Object.keys(media).indexOf(mds)} class="play" data="https://video.aad1416.workers.dev/${btoa(media[mds])}">play</button><hr />`);
+for (const mds in media) {m.push(`<h2>${mds}</h2><a href="${media[mds]}">download</a> <button id=${Object.keys(media).indexOf(mds)} class="play" data="https://video.aad1416.workers.dev/mail?num=${Object.keys(media).indexOf(mds)}&fa=${media[mds]}">play</button><hr />`);
 };res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
 }//else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
 };
