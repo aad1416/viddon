@@ -149,22 +149,12 @@ for (const mds in media) {m.push(`<h2>${mds}</h2><a href="${media[mds]}">downloa
 }//else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
 };
 x.send();}
-else if (u.hostname.includes('vk')){var x=new XMLHttpRequest();x.open("POST","https://plometei.ru/wp-json/aio-dl/video-data/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.overrideMimeType('application/json; charset=UTF-8');
-x.onreadystatechange = function() { 
-if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-var resp=JSON.parse(x.responseText);
-var title=resp.title;var dur=resp.duration;var img=resp.thumbnail;var media=resp.medias;var m=[`<h2>${title} - ${dur}</h2>`];
-for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href="${mds.url}">download</a> <button id=${media.indexOf(mds)} class="play" data="https://video.aad1416.workers.dev/${btoa(mds.url)}">play</button><hr />`);
-};res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
-}else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
-};
-x.send("url="+inp+"&token=ebf8f0dea5c9b466cbda895f8199b0e7e0714c6f5affaa6de56b522d920c00a3");} 
 else {var x=new XMLHttpRequest();x.open("POST","https://plometei.ru/wp-json/aio-dl/video-data/");x.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");x.overrideMimeType('application/json; charset=UTF-8');
 x.onreadystatechange = function() { 
 if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
 var resp=JSON.parse(x.responseText);
 var title=resp.title;var dur=resp.duration;var img=resp.thumbnail;var media=resp.medias;var m=[`<h2>${title} - ${dur}</h2>`];
-for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href="${mds.url}">download</a> <button id=${media.indexOf(mds)} class="play" data="${mds.url}">play</button><hr />`);
+for (const mds of media) {m.push(`<h2>${mds.extension} - ${mds.formattedSize} - ${mds.quality}</h2><a href="${mds.url}">download</a> <button id=${media.indexOf(mds)} class="play" data="https://video.aad1416.workers.dev/video?u=${mds.url}">play</button><hr />`);
 };res.style.display="none";document.getElementById("main").style.height="auto";wrp.style.opacity="1";result.innerHTML=m.join(" ");
 }else if (this.readyState === XMLHttpRequest.DONE && this.status != 200){location.href=location.href;};
 };
